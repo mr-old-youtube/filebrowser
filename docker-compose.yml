@@ -1,0 +1,15 @@
+version: '3'
+services:
+  filebrowser:
+    image: filebrowser/filebrowser
+    container_name: filebrowser
+    volumes:
+      - /mnt/sda1:/srv #Change to match your directory
+      - /home/pi/filebrowser/filebrowser.db:/database/filebrowser.db #Change to match your directory
+      - /home/pi/filebrowser/settings.json:/config/settings.json #Change to match your directory
+    environment:
+      - PUID=$(id -u)
+      - PGID=$(id -g)
+    ports:
+      - 8095:80 #Change the port if needed
+
